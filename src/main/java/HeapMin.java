@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Heap {
+public class HeapMin {
     private int maxSize = 20;
     private int[] H = new int[maxSize];
     private int size = -1;
