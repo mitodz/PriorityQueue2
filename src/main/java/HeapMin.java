@@ -40,9 +40,9 @@ public class HeapMin {
         siftUp(size);
     }
 
-    public int extractMin() {
-        int result = H[0][1];
-        H[0][1] = H[size][1];
+    public int[] extractMin() {
+        int[] result = H[0];
+        H[0] = H[size];
         size--;
         siftDown(0);
         return result;

@@ -9,8 +9,10 @@ public class Main {
         for (int i = 0; i < n; i++) {
             heapOfProcessors.insert(scanner.nextInt());
         }
+        //реализовать нумерацию процессоров
         for (int i = 0; i < n; i++) {
-            System.out.print(heapOfProcessors.extractMin() + " ");
+            int[] ints = heapOfProcessors.extractMin();
+            System.out.print(ints[0] + " " + ints[1] + "\n");
         }
         //int m = scanner.nextInt(); //количество процессов
     }
