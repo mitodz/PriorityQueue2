@@ -2,13 +2,13 @@ import java.util.Arrays;
 
 public class HeapMin {
     private int maxSize = 20;
-    private int[] H = new int[maxSize];
+    private int[][] H = new int[maxSize][2];
     private int size = -1;
 
 
     private void siftUp(int i) {
-        while (i > 0 && H[parent(i)] > H[i]) {
-            if (parent(i)==parent(i-1) && H[i-1] < H[i]) return;
+        while (i > 0 && H[parent(i)][1] > H[i][1]) {
+            if (parent(i)==parent(i-1) && H[i-1][1] < H[i][1]) return;
             swap(i, parent(i));
             i = parent(i);
         }
@@ -17,11 +17,11 @@ public class HeapMin {
     private void siftDown(int i) {
         int minIndex = i;
         int l = left(i);
-        if (l <= size && H[l] < H[minIndex]) {
+        if (l <= size && H[l][1] < H[minIndex][1]) {
             minIndex = l;
         }
         int r = right(i);
-        if (r <= size && H[r] < H[minIndex]) {
+        if (r <= size && H[r][1] < H[minIndex][1]) {
             minIndex = r;
         }
         if (i != minIndex) {
@@ -36,27 +36,27 @@ public class HeapMin {
             maxSize = maxSize * 3 / 2;
         }
         size++;
-        H[size] = p;
+        H[size][1] = p;
         siftUp(size);
     }
 
     public int extractMin() {
-        int result = H[0];
-        H[0] = H[size];
+        int result = H[0][1];
+        H[0][1] = H[size][1];
         size--;
         siftDown(0);
         return result;
     }
 
     public void remove(int i) {
-        H[i] = Integer.MIN_VALUE;
+        H[i][1] = Integer.MIN_VALUE;
         siftUp(i);
         extractMin();
     }
 
     public void changePriority(int i, int p) {
-        int oldP = H[i];
-        H[i] = p;
+        int oldP = H[i][1];
+        H[i][1] = p;
         if (p < oldP) {
             siftUp(i);
         } else {
@@ -65,9 +65,9 @@ public class HeapMin {
     }
 
     private void swap(int i, int j) {
-        int t = H[i];
-        H[i] = H[j];
-        H[j] = t;
+        int t = H[i][1];
+        H[i][1] = H[j][1];
+        H[j][1] = t;
     }
 
     private int parent(int i) {
