@@ -37,6 +37,7 @@ public class HeapMin {
         }
         size++;
         H[size][1] = p;
+        H[size][0] = size;
         siftUp(size);
     }
 
@@ -65,9 +66,9 @@ public class HeapMin {
     }
 
     private void swap(int i, int j) {
-        int t = H[i][1];
-        H[i][1] = H[j][1];
-        H[j][1] = t;
+        int[] t = H[i];
+        H[i] = H[j];
+        H[j] = t;
     }
 
     private int parent(int i) {
