@@ -1,6 +1,3 @@
-import javafx.scene.layout.Priority;
-
-import java.util.AbstractMap;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Scanner;
@@ -8,7 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner("2 5 1 2 3 4 5");
+        Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt(); //количество процессоров
         int m = scanner.nextInt(); //количество процессов
         long[][] a = new long[n][2];
@@ -19,7 +16,6 @@ public class Main {
         for (int i = 0; i < n; i++) {
             a[i][0] = i;
             q.add(a[i]);
-            //System.out.print(i + " 0\n");
         }
         for (int i = 0; i < m; i++) {
             long[] j = q.poll();
@@ -27,7 +23,5 @@ public class Main {
             j[1] += scanner.nextInt();
             q.add(j);
         }
-
-
     }
 }
