@@ -5,6 +5,11 @@ public class HeapMin {
     private int[][] H = new int[maxSize][2];
     private int size = -1;
 
+    public HeapMin(){};
+
+    public HeapMin (int maxSize) {
+        this.maxSize = maxSize;
+    }
 
     private void siftUp(int i) {
         while (i > 0 && H[parent(i)][1] > H[i][1]) {
