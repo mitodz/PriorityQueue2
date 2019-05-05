@@ -11,6 +11,12 @@ public class HeapMin {
         this.maxSize = maxSize;
     }
 
+    public void numerateProcessors(int n) {
+        for (int i = 0; i < maxSize; i++) {
+
+        }
+    }
+
     private void siftUp(int i) {
         while (i > 0 && H[parent(i)][1] > H[i][1]) {
             if (parent(i)==parent(i-1) && H[i-1][1] < H[i][1]) return;
