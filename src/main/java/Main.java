@@ -9,8 +9,16 @@ public class Main {
         int n = scanner.nextInt(); //количество процессоров
         int m = scanner.nextInt(); //количество процессов
         long[][] a = new long[n][2];
-        Comparator<long[]> c1 = (x, y) -> x[1] >= y[1] ? 1 : -1; //компаратор времени
-        Comparator<long[]> c2 = (x, y) -> x[0] <= y[0] ? 1 : -1; //компаратор нумерации процессора
+        Comparator<long[]> c1 = (x, y) -> {
+            if (x[1] > y[1]) return 1;
+            if (x[1] < y[1]) return -1;
+            return 0;
+        };//компаратор времени
+        Comparator<long[]> c2 = (x, y) -> {
+            if (x[0] > y[0]) return 1;
+            if (x[0] < y[0]) return -1;
+            return 0;
+        }; //компаратор нумерации процессора
         Comparator<long[]> c3 = c1.thenComparing(c2); //финальный компаратор
         PriorityQueue<long[]> q = new PriorityQueue<>(c3);
         for (int i = 0; i < n; i++) {
